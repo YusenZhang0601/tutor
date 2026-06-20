@@ -1,13 +1,3 @@
 {
-  "version": 1,
-  "updated": null,
-  "source": "Derived by .tutor/core/scripts/evaluate-learning.py; do not hand-edit learning state here.",
-  "metrics": {
-    "review_count": 0,
-    "average_q": null,
-    "due_pass_rate": null,
-    "lapse_count": 0,
-    "recurring_misconception_count": 0,
-    "high_friction_concept_count": 0
-  }
+  "experiments": []
 }
