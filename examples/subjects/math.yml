@@ -1,0 +1,14 @@
+id: math-foundations
+title: Mathematics Foundations
+domain_type: mathematics
+goal_depth: independent problem solving
+output_mode:
+  - solve
+  - explain
+  - prove
+practice_types:
+  - recall
+  - worked-example
+  - variation
+  - proof-sketch
+mastery_evidence: solves novel problems and explains each legal step

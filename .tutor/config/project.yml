@@ -1,0 +1,37 @@
+{
+  "project": {
+    "name": "tutor",
+    "root_label": "Learning Space",
+    "language": "en",
+    "entry_files": ["AGENTS.md", "CLAUDE.md"]
+  },
+  "paths": {
+    "protocol": ".tutor/core/protocol.md",
+    "settings": ".tutor/core/settings.yml",
+    "scripts": ".tutor/core/scripts",
+    "skills": ".tutor/core/skills",
+    "docs": ".tutor/docs",
+    "session_close_checklist": ".tutor/docs/session-close-checklist.md",
+    "upgrade_opportunities": ".tutor/docs/upgrade-opportunities.md",
+    "subjects": "subjects",
+    "learner_profile": ".tutor/config/learner-profile.md",
+    "review_cards": ".tutor/data/review-cards.json",
+    "lints": ".tutor/config/lints.yml",
+    "external_evidence": ".tutor/config/external-evidence.md",
+    "evolution": ".tutor/evolution"
+  },
+  "status": {
+    "current_subject": "none",
+    "current_topic": "no subject planned yet; waiting for /onboard or /plan",
+    "next": "run /onboard, then /plan <subject>",
+    "note": "template initial state; no personal learning content has been added"
+  },
+  "subjects": {},
+  "review": {
+    "empty_due_next": "run /onboard, then /plan <subject>.",
+    "due_summary_next": "run due review before new learning.",
+    "priority_signal_label": "overdue days, latest q, mistake count, checkpoint",
+    "groups": [],
+    "footer_notes": []
+  }
+}

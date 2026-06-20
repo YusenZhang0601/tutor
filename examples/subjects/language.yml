@@ -1,0 +1,14 @@
+id: language-practice
+title: Language Practice
+domain_type: language
+goal_depth: active production
+output_mode:
+  - speak
+  - write
+  - listen
+practice_types:
+  - recall
+  - sentence-production
+  - dictation
+  - correction
+mastery_evidence: produces target forms accurately in realistic contexts

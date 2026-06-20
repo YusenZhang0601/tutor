@@ -1,0 +1,14 @@
+id: engineering-project
+title: Engineering Project
+domain_type: engineering-project
+goal_depth: project owner
+output_mode:
+  - trace
+  - explain
+  - modify
+practice_types:
+  - code-tracing
+  - design-recall
+  - failure-diagnosis
+  - change-risk-review
+mastery_evidence: can locate implementation, explain tradeoffs, and judge change risk

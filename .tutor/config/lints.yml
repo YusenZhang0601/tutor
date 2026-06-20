@@ -1,0 +1,12 @@
+# Content precision lint rules.
+#
+# Keep at least one rule so the generic validator can verify the lint pipeline.
+
+roots:
+  - subjects
+  - state
+
+rules:
+  - id: template-nonmatching-rule
+    pattern: 'THIS_PATTERN_SHOULD_NOT_MATCH_TEMPLATE_CONTENT_6f5d8e'
+    message: 'template placeholder rule keeps lint validation active without flagging empty projects'
