@@ -43,7 +43,7 @@ To refresh generated state only, run `python3 .tutor/core/scripts/refresh-status
 current_subject: none
 current_topic: no subject planned yet; waiting for /onboard or /plan
 last_session: unknown
-due_today: 0 (截至2026-06-20：无到期概念)
+due_today: 0 (截至2026-07-06：无到期概念)
 mastered: 0/0 (暂无概念)
 next: run /onboard, then /plan <subject>
 note: template initial state; no personal learning content has been added
