@@ -17,32 +17,39 @@ This repository is a clean template. It contains no personal study history, no p
 
 ## Quick Start
 
-```bash
-git clone https://github.com/YusenZhang0601/tutor.git
-cd tutor
-```
+1. **Clone the repository:**
+   ```bash
+   git clone https://github.com/YusenZhang0601/tutor.git
+   cd tutor
+   ```
 
-Open the folder with your AI coding or writing agent, then start from the entry instructions:
+2. **Initialize your AI Agent:**
+   Open this folder in your AI workspace (such as Claude Code, Cursor, Copilot, etc.). 
+   To activate the tutor system, **send this initial message to your agent**:
+   > Please read AGENTS.md (or CLAUDE.md if using Claude Code) to initialize the Tutor learning mode.
 
-- `AGENTS.md` for Codex-style agents
-- `CLAUDE.md` for Claude Code
-
-Typical first session:
-
-```text
-/onboard
-/plan <subject>
-/learn
-```
+3. **Start your first session:**
+   Type the following commands to your agent to begin:
+   ```text
+   /onboard
+   /plan <subject>
+   /learn
+   ```
 
 ## Validate The Template
 
-Use the current date for `--today`.
+Use the current date for `<YYYY-MM-DD>`. 
 
 ```bash
+# On macOS/Linux:
 python3 .tutor/core/scripts/refresh-status.py --today <YYYY-MM-DD>
 python3 .tutor/core/scripts/validate-study.py --today <YYYY-MM-DD> --core-only
 python3 .tutor/core/scripts/plan-review.py --today <YYYY-MM-DD> --cards
+
+# On Windows (if python3 is not mapped):
+python .tutor/core/scripts/refresh-status.py --today <YYYY-MM-DD>
+python .tutor/core/scripts/validate-study.py --today <YYYY-MM-DD> --core-only
+python .tutor/core/scripts/plan-review.py --today <YYYY-MM-DD> --cards
 ```
 
 A clean template should report:

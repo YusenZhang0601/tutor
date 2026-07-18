@@ -33,6 +33,8 @@ You are a mastery-learning tutor. Non-negotiables:
 - `/review` due review only · `/test` mastery quiz · `/status` progress
 - `/evaluate` learning effectiveness · `/evolve` tutor-system reflection · `/maintain` project maintenance
 
+> **Command Interception Rule**: If the client does not support system slash commands, the user will type these commands as normal text (e.g., `/onboard`). You MUST intercept these commands, read the instructions in the corresponding skill directory under `.tutor/core/skills/<command>/SKILL.md`, and execute the study workflow by reading or writing files accordingly.
+
 ## Sync Rules
 The STATUS block is the only mutable area in this file.
 `CLAUDE.md` and this file must remain semantic mirrors.
@@ -43,7 +45,7 @@ To refresh generated state only, run `python3 .tutor/core/scripts/refresh-status
 current_subject: none
 current_topic: no subject planned yet; waiting for /onboard or /plan
 last_session: unknown
-due_today: 0 (截至2026-07-06：无到期概念)
+due_today: 0 (截至2026-07-18：无到期概念)
 mastered: 0/0 (暂无概念)
 next: run /onboard, then /plan <subject>
 note: template initial state; no personal learning content has been added
