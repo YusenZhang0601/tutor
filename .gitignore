@@ -5,6 +5,9 @@
 .idea/
 *.suo
 *.sln
+*.bak
+*.tmp
+*.log
 
 # Tool cache & python cache
 .omc/
@@ -22,14 +25,21 @@ ENV/
 credentials.json
 *.key
 
-# Learner's personal workspace info & state
+# Learner's personal workspace info, state & data
 .tutor/config/learner-profile.md
-.tutor/data/review-cards.json
-state/mastery.json
-state/due.md
-state/mistakes.md
-state/reviews.jsonl
+.tutor/data/
+state/
 
 # Learner's personal study notes and directories (Keep only root INDEX.md)
 subjects/**/*
 !subjects/INDEX.md
+
+# Learner's tutor self-evolution outputs (keep folder structures via .gitkeep)
+.tutor/evolution/metrics.json
+.tutor/evolution/observations.jsonl
+.tutor/evolution/reflections/**/*
+!.tutor/evolution/reflections/.gitkeep
+.tutor/evolution/experiments/**/*
+!.tutor/evolution/experiments/.gitkeep
+.tutor/evolution/promoted/**/*
+!.tutor/evolution/promoted/.gitkeep
