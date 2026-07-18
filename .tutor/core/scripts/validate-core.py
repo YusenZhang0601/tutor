@@ -340,7 +340,54 @@ def validate_project_config(errors: list[str], config: dict[str, Any]) -> None:
         fail(errors, "project config project.entry_files must contain at least one file")
 
 
-def validate_required_files(errors: list[str], config: dict[str, Any]) -> None:
+def validate_required_files(errors: list[str], config: dict[str, Any], today_str: str) -> None:
+    # Auto-initialize user-specific state/config files if missing
+    learner_profile_path = ROOT / configured_path(config, "learner_profile", ".tutor/config/learner-profile.md")
+    if not learner_profile_path.is_file():
+        learner_profile_path.parent.mkdir(parents=True, exist_ok=True)
+        template_path = ROOT / ".tutor/config/learner-profile.template.md"
+        if template_path.is_file():
+            learner_profile_path.write_text(template_path.read_text(encoding="utf-8"), encoding="utf-8")
+        else:
+            learner_profile_path.write_text("# Learner Profile\n", encoding="utf-8")
+
+    review_cards_path = ROOT / configured_path(config, "review_cards", ".tutor/data/review-cards.json")
+    if not review_cards_path.is_file():
+        review_cards_path.parent.mkdir(parents=True, exist_ok=True)
+        review_cards_path.write_text('{"cards": {}}', encoding="utf-8")
+
+    mastery_path = ROOT / "state/mastery.json"
+    if not mastery_path.is_file():
+        mastery_path.parent.mkdir(parents=True, exist_ok=True)
+        mastery_path.write_text('{"concepts": {}, "summary": {"total": 0, "learning": 0, "lapsed": 0, "mastered": 0}}', encoding="utf-8")
+
+    mistakes_path = ROOT / "state/mistakes.md"
+    if not mistakes_path.is_file():
+        mistakes_path.parent.mkdir(parents=True, exist_ok=True)
+        mistakes_path.write_text("# Mistakes Log\n\nNo mistakes recorded yet.\n", encoding="utf-8")
+
+    reviews_path = ROOT / "state/reviews.jsonl"
+    if not reviews_path.is_file():
+        reviews_path.parent.mkdir(parents=True, exist_ok=True)
+        reviews_path.write_text("", encoding="utf-8")
+
+    due_path = ROOT / "state/due.md"
+    if not due_path.is_file():
+        due_path.parent.mkdir(parents=True, exist_ok=True)
+        due_path.write_text(f"""# 今日复习队列（due.md）
+
+> 每次会话开头重新生成：扫描所有概念笔记 frontmatter，列出 `due` ≤ 今天的概念。生成产物，勿手工编辑。
+> 上次生成：{today_str}（维护刷新；按概念笔记 frontmatter 重算）
+
+截至 {today_str}，共 0 个概念已到期；run due review before new learning.
+
+## 建议交错顺序
+> 生成提示，不替代导师判断。排序信号：overdue days, latest q, mistake count, checkpoint；输出时尽量避免连续同主题。
+
+| concept_id | topic | due | q | checkpoint |
+| :--- | :--- | :--- | :--- | :--- |
+""", encoding="utf-8")
+
     required = [
         *entry_files(config),
         "INDEX.md",
@@ -1008,7 +1055,7 @@ def main() -> int:
     errors: list[str] = []
     config = load_project_config(errors)
     validate_project_config(errors, config)
-    validate_required_files(errors, config)
+    validate_required_files(errors, config, args.today)
     validate_python_scripts(errors)
     validate_skill_docs(errors)
     settings = parse_settings(errors, config)

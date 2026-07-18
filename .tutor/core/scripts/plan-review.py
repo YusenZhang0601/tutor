@@ -85,7 +85,10 @@ def due_rows() -> list[dict[str, str]]:
 
 
 def mistake_counts() -> dict[str, int]:
-    text = (ROOT / "state/mistakes.md").read_text(encoding="utf-8")
+    path = ROOT / "state/mistakes.md"
+    if not path.exists():
+        return {}
+    text = path.read_text(encoding="utf-8")
     counts: dict[str, int] = {}
     for match in re.finditer(r"\]\s+([a-z0-9-]+)(?:[：(])", text):
         concept_id = match.group(1)
@@ -104,6 +107,8 @@ def review_cards() -> dict[str, dict[str, str]]:
     config = load_project_config()
     path_text = config.get("paths", {}).get("review_cards", ".tutor/data/review-cards.json")
     path = ROOT / path_text
+    if not path.exists():
+        return {}
     data = json.loads(path.read_text(encoding="utf-8"))
     cards = data.get("cards", {})
     if not isinstance(cards, dict):
